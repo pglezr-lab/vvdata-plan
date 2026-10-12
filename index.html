@@ -304,7 +304,7 @@
 
               <!-- Botón WhatsApp para este hito con micro-animación -->
               <div class="pt-1.5">
-                <a href="https://wa.me/?text=Hola%20Patricio,%20estoy%20viendo%20el%20avance%20de%20VVData.%20Sobre%20la%20Tarea%205%20(Ingenier%C3%ADa%20Inversa)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
+                <a href="https://wa.me/?text=Hola%20Pedro,%20estoy%20viendo%20el%20avance%20de%20VVData.%20Sobre%20la%20Tarea%205%20(Ingenier%C3%ADa%20Inversa)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
                   <span>Comentar esta tarea por WhatsApp</span>
                 </a>
@@ -348,7 +348,7 @@
         </div>
         <h3 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">¿Tienes alguna duda u observación?</h3>
         <p class="text-xs sm:text-sm text-slate-500 mt-1">
-          Escribe tu comentario y se enviará directamente a Patricio González vía WhatsApp.
+          Escribe tu comentario y se enviará directamente a Pedro González vía WhatsApp.
         </p>
 
         <form class="mt-4 sm:mt-5 space-y-3" onsubmit="sendWhatsAppComment(event)">
@@ -375,7 +375,7 @@
 
           <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-black text-sm shadow-md flex items-center justify-center gap-2 transition active:scale-95 cursor-pointer">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
-            <span>Enviar a Patricio por WhatsApp</span>
+            <span>Enviar a Pedro por WhatsApp</span>
           </button>
         </form>
       </div>
@@ -387,7 +387,7 @@
   <footer class="bg-white border-t border-slate-200 py-5 text-[11px] sm:text-xs text-slate-400 mt-8">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
       <div>
-        <span>Proyecto: <strong>VVData</strong> · Dirección: <strong>Patricio González</strong></span>
+        <span>Proyecto: <strong>VVData</strong> · Dirección: <strong>Pedro González</strong></span>
       </div>
       <div>
         <span>Actualización: <strong>12 Oct 2026</strong> · Repositorio GitHub sincronizado</span>
@@ -413,7 +413,7 @@
       const topic = document.getElementById('taskSelect').value;
       const comment = document.getElementById('userComment').value.trim();
 
-      const text = `Hola Patricio, soy ${name}.\n\nRevisé el Plan de Trabajo de VVData y sobre el tema *${topic}* tengo el siguiente comentario:\n\n"${comment}"`;
+      const text = `Hola Pedro, soy ${name}.\n\nRevisé el Plan de Trabajo de VVData y sobre el tema *${topic}* tengo el siguiente comentario:\n\n"${comment}"`;
       const encodedText = encodeURIComponent(text);
       window.open(`https://wa.me/?text=${encodedText}`, '_blank');
     }
