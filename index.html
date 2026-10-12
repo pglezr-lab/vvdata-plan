@@ -6,13 +6,46 @@
   <title>VVData · Tablero Ejecutivo de Avance</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @keyframes pulseSlow {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.06); opacity: 0.9; }
+    /* Efecto de resplandor vivo en la tarjeta activa */
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 4px 20px -2px rgba(245, 158, 11, 0.22), 0 0 0 1.5px rgba(251, 191, 36, 0.7);
+      }
+      50% {
+        box-shadow: 0 8px 32px 3px rgba(245, 158, 11, 0.45), 0 0 0 2.5px rgba(245, 158, 11, 0.95);
+      }
     }
-    .animate-pulse-slow {
-      animation: pulseSlow 2.5s infinite ease-in-out;
+    .animate-glow-amber {
+      animation: pulseGlow 2.6s infinite ease-in-out;
     }
+
+    /* Brillo de luz que recorre la barra de progreso */
+    @keyframes shimmerSweep {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      100% { transform: translateX(250%) skewX(-20deg); }
+    }
+    .animate-shimmer {
+      animation: shimmerSweep 3.2s infinite ease-in-out;
+    }
+
+    /* Flotación sutil del icono del rayo */
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-3px) rotate(4deg); }
+    }
+    .animate-float-icon {
+      animation: floatIcon 2.8s infinite ease-in-out;
+    }
+
+    /* Efecto radar expansivo */
+    @keyframes radarPulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+    .animate-radar {
+      animation: radarPulse 1.8s infinite cubic-bezier(0, 0, 0.2, 1);
+    }
+
     body {
       overflow-x: hidden;
       -webkit-tap-highlight-color: transparent;
@@ -25,15 +58,16 @@
   <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/90 sticky top-0 z-40 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.04)]">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
       
-      <!-- Marca y Subtítulo -->
+      <!-- Marca y Subtítulo con micro-interacción -->
       <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-600/25 font-black text-lg sm:text-xl shrink-0">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-white shadow-md shadow-emerald-600/25 font-black text-lg sm:text-xl shrink-0 transition-transform duration-300 hover:scale-105">
           V
         </div>
         <div class="min-w-0">
           <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             <h1 class="text-base sm:text-lg font-black tracking-tight text-slate-900 truncate">VVData</h1>
-            <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
+            <span class="relative text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               Vuélvete Verde
             </span>
           </div>
@@ -43,8 +77,8 @@
 
       <!-- Botón de Acción Header -->
       <div class="shrink-0">
-        <a href="#comentarios" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition active:scale-95">
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25zm4.52-6.18c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/></svg>
+        <a href="#comentarios" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
           <span class="hidden xs:inline">Comentar</span>
         </a>
       </div>
@@ -55,8 +89,8 @@
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="max-w-5xl mx-auto px-3.5 sm:px-6 py-5 sm:py-8 flex-1 w-full space-y-6 sm:space-y-10">
 
-    <!-- HERO: LA ÚNICA BARRA MAESTRA DE PROGRESO GLOBAL (100% ADAPTADA A MÓVIL) -->
-    <section class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200/90 shadow-sm relative overflow-hidden">
+    <!-- HERO: LA ÚNICA BARRA MAESTRA DE PROGRESO GLOBAL CON SHIMMER ANIMADO -->
+    <section class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200/90 shadow-sm relative overflow-hidden transition-shadow duration-300 hover:shadow-md">
       <!-- Glow ambiental decorativo -->
       <div class="absolute -right-16 -top-16 w-48 sm:w-64 h-48 sm:h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -65,9 +99,14 @@
           <span class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100">
             Medición Contractual
           </span>
-          <div class="px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-bold flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            Hito Activo: Tarea 5
+          
+          <!-- Hito Activo con indicador radar vivo -->
+          <div class="px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-bold flex items-center gap-2">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-radar absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            <span>Hito Activo: Tarea 5</span>
           </div>
         </div>
 
@@ -82,22 +121,30 @@
         </div>
       </div>
 
-      <!-- Barra de Progreso Segmentada -->
+      <!-- Barra de Progreso Segmentada con Shimmer Animado -->
       <div class="mt-5 space-y-3">
         <div class="flex items-center justify-between text-xs font-bold text-slate-600">
           <span>División en 3 Grandes Hitos</span>
-          <span class="text-emerald-700">Bloque 1 cerrando</span>
+          <span class="text-emerald-700 font-extrabold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Bloque 1 cerrando
+          </span>
         </div>
 
-        <div class="w-full bg-slate-100 rounded-xl sm:rounded-2xl h-6 sm:h-7 p-1 flex gap-1 border border-slate-200/80 shadow-inner">
-          <!-- Bloque 1 (28% global) -->
-          <div class="h-full rounded-lg sm:rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 flex items-center justify-center transition-all duration-700 shadow-sm" style="width: 28%;">
-            <span class="text-[10px] font-black text-white px-1 truncate">85%</span>
+        <div class="w-full bg-slate-100 rounded-xl sm:rounded-2xl h-6 sm:h-7 p-1 flex gap-1 border border-slate-200/80 shadow-inner overflow-hidden">
+          
+          <!-- Bloque 1 (28% global) con haz de luz shimmer continuo -->
+          <div class="relative h-full rounded-lg sm:rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 flex items-center justify-center transition-all duration-700 shadow-sm overflow-hidden" style="width: 28%;">
+            <!-- Haz de luz animado -->
+            <div class="absolute inset-0 w-2/3 bg-gradient-to-r from-transparent via-white/35 to-transparent animate-shimmer pointer-events-none"></div>
+            <span class="relative text-[10px] font-black text-white px-1 truncate">85%</span>
           </div>
+
           <!-- Bloque 2 -->
           <div class="h-full rounded-lg sm:rounded-xl bg-slate-200/60 flex items-center justify-center transition-all" style="width: 42%;">
             <span class="text-[10px] font-bold text-slate-400 px-1 truncate hidden sm:inline">Pendiente</span>
           </div>
+
           <!-- Bloque 3 -->
           <div class="h-full rounded-lg sm:rounded-xl bg-slate-200/60 flex items-center justify-center transition-all" style="width: 30%;">
             <span class="text-[10px] font-bold text-slate-400 px-1 truncate hidden sm:inline">Pendiente</span>
@@ -106,7 +153,7 @@
 
         <!-- Tarjetas explicativas de los 3 bloques -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 pt-2 text-xs">
-          <div class="p-3 rounded-xl sm:rounded-2xl bg-emerald-50/80 border border-emerald-200/80">
+          <div class="p-3 rounded-xl sm:rounded-2xl bg-emerald-50/80 border border-emerald-200/80 transition-all duration-200 hover:shadow-sm">
             <div class="font-extrabold text-emerald-950 flex items-center gap-1.5 text-xs sm:text-sm">
               <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
               Bloque 1 · Cimientos y Reglas
@@ -114,7 +161,7 @@
             <div class="text-slate-600 text-[11px] mt-1">SOPs, Requerimientos, Gobernanza e Ingeniería Inversa.</div>
           </div>
 
-          <div class="p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 transition-all duration-200 hover:bg-white hover:shadow-sm">
             <div class="font-bold text-slate-700 flex items-center gap-1.5 text-xs sm:text-sm">
               <span class="w-2 h-2 rounded-full bg-slate-300 shrink-0"></span>
               Bloque 2 · Core & Cotizador Web
@@ -122,7 +169,7 @@
             <div class="text-slate-500 text-[11px] mt-1">Base de datos, margen variable y backoffice administrativo.</div>
           </div>
 
-          <div class="p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 transition-all duration-200 hover:bg-white hover:shadow-sm">
             <div class="font-bold text-slate-700 flex items-center gap-1.5 text-xs sm:text-sm">
               <span class="w-2 h-2 rounded-full bg-slate-300 shrink-0"></span>
               Bloque 3 · App Móvil de Campo
@@ -149,7 +196,7 @@
       <div class="space-y-3">
 
         <!-- Tarea 0 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4">
+        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
             ✓
           </div>
@@ -165,7 +212,7 @@
         </article>
 
         <!-- Tarea 1 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4">
+        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
             ✓
           </div>
@@ -181,7 +228,7 @@
         </article>
 
         <!-- Tarea 2 y 2.5 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4">
+        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
             ✓
           </div>
@@ -197,7 +244,7 @@
         </article>
 
         <!-- Tarea 4 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4">
+        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
             ✓
           </div>
@@ -213,7 +260,7 @@
         </article>
 
         <!-- Tarea 3 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4">
+        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
             ✓
           </div>
@@ -228,33 +275,50 @@
           </div>
         </article>
 
-        <!-- Tarea 5 (EN EJECUCIÓN ACTIVA - DESTACADA) -->
-        <article class="bg-gradient-to-br from-amber-50/95 via-white to-amber-50/40 rounded-xl sm:rounded-2xl p-4 sm:p-5 border-2 border-amber-400 shadow-md flex items-start gap-3 sm:gap-4 relative overflow-hidden">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500 text-amber-950 flex items-center justify-center shrink-0 font-black text-sm shadow-md shadow-amber-500/20 animate-pulse-slow mt-0.5">
-            ⚡
-          </div>
-          <div class="flex-1 min-w-0 space-y-2.5">
-            <div class="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5">
-              <h4 class="font-black text-slate-900 text-sm sm:text-base">
-                Tarea 5 · Ingeniería Inversa y Sistemas Previos
-              </h4>
-              <span class="self-start xs:self-auto px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-amber-950 uppercase tracking-wide shrink-0">
-                ● En Ejecución Activa
-              </span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed font-normal">
-              • <strong>Software en Vercel:</strong> Chunks públicos analizados (Next.js, 4 módulos, confirmada la carencia de entidad Ubicación). En curso: formularios internos con PIN.<br>
-              • <strong>Zoho CRM:</strong> Examen de campos abiertos y causas del colapso relacional.<br>
-              • <strong>Objetivo:</strong> Blindar a VVData para no repetir los errores de los sistemas anteriores.
-            </p>
+        <!-- Tarea 5 (EN EJECUCIÓN ACTIVA - ANIMACIÓN VIVA DE ALTO IMPACTO) -->
+        <article class="animate-glow-amber bg-gradient-to-br from-amber-50/95 via-white to-amber-100/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-amber-400 relative overflow-hidden transition-all duration-300">
+          
+          <!-- Cinta de fondo interactiva -->
+          <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
-            <!-- Botón WhatsApp para este hito -->
-            <div class="pt-1">
-              <a href="https://wa.me/?text=Hola%20Patricio,%20estoy%20viendo%20el%20avance%20de%20VVData.%20Sobre%20la%20Tarea%205%20(Ingenier%C3%ADa%20Inversa)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition active:scale-95">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
-                <span>Comentar esta tarea por WhatsApp</span>
-              </a>
+          <div class="flex items-start gap-3.5 sm:gap-4">
+            
+            <!-- Icono con animación de flotación e inclinación -->
+            <div class="animate-float-icon w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-400 text-amber-950 flex items-center justify-center shrink-0 font-black text-base sm:text-lg shadow-md shadow-amber-500/30 mt-0.5">
+              ⚡
             </div>
+
+            <div class="flex-1 min-w-0 space-y-2.5">
+              <div class="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
+                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <span>Tarea 5 · Ingeniería Inversa y Sistemas Previos</span>
+                </h4>
+                
+                <!-- Pill animada con onda radar -->
+                <span class="self-start xs:self-auto relative inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-amber-400 text-amber-950 uppercase tracking-wide shrink-0 shadow-sm">
+                  <span class="relative flex h-2 w-2">
+                    <span class="animate-radar absolute inline-flex h-full w-full rounded-full bg-amber-900 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-950"></span>
+                  </span>
+                  <span>En Ejecución Activa</span>
+                </span>
+              </div>
+
+              <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed font-normal">
+                • <strong>Software en Vercel:</strong> Chunks públicos analizados (Next.js, 4 módulos, confirmada la carencia de entidad Ubicación). En curso: formularios internos con PIN.<br>
+                • <strong>Zoho CRM:</strong> Examen de campos abiertos y causas del colapso relacional.<br>
+                • <strong>Objetivo:</strong> Blindar a VVData para no repetir los errores de los sistemas anteriores.
+              </p>
+
+              <!-- Botón WhatsApp para este hito con micro-animación -->
+              <div class="pt-1.5">
+                <a href="https://wa.me/?text=Hola%20Patricio,%20estoy%20viendo%20el%20avance%20de%20VVData.%20Sobre%20la%20Tarea%205%20(Ingenier%C3%ADa%20Inversa)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
+                  <span>Comentar esta tarea por WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -272,11 +336,11 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-        <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600">
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 transition-all duration-200 hover:shadow-sm hover:border-slate-300">
           <div class="font-bold text-slate-800 text-xs sm:text-sm">Tarea 6 · Decisión de Base de Datos y Servidor</div>
           <p class="text-[11px] mt-1 text-slate-500">Comparativa técnica y costos: PostgreSQL en VPS vs Supabase BaaS.</p>
         </div>
-        <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600">
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 transition-all duration-200 hover:shadow-sm hover:border-slate-300">
           <div class="font-bold text-slate-800 text-xs sm:text-sm">Tarea 7 · Stack Final y Pruebas Automáticas</div>
           <p class="text-[11px] mt-1 text-slate-500">Librerías oficiales y candados pre-commit para cero errores.</p>
         </div>
@@ -284,7 +348,7 @@
     </section>
 
     <!-- BUZÓN DIRECTO DE COMENTARIOS VÍA WHATSAPP -->
-    <section id="comentarios" class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-slate-200 shadow-sm mt-8">
+    <section id="comentarios" class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-slate-200 shadow-sm mt-8 transition-shadow duration-200 hover:shadow-md">
       <div class="max-w-xl">
         <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-2">
           <svg class="w-3.5 h-3.5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92z"/></svg>
@@ -339,9 +403,13 @@
     </div>
   </footer>
 
-  <!-- BOTÓN FLOTANTE DE WHATSAPP PARA ACCESO RÁPIDO EN MÓVILES (FAB) -->
-  <a href="#comentarios" class="sm:hidden fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-[#25D366] text-white px-3.5 py-2.5 rounded-full shadow-lg shadow-emerald-950/20 active:scale-95 transition text-xs font-bold" aria-label="Enviar comentario rápido por WhatsApp">
-    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
+  <!-- BOTÓN FLOTANTE DE WHATSAPP PARA ACCESO RÁPIDO EN MÓVILES (FAB) CON ONDA PULSANTE -->
+  <a href="#comentarios" class="sm:hidden fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-[#25D366] text-white px-3.5 py-2.5 rounded-full shadow-xl shadow-emerald-950/25 active:scale-95 transition-all duration-200 text-xs font-bold hover:bg-[#20ba59]" aria-label="Enviar comentario rápido por WhatsApp">
+    <span class="relative flex h-2 w-2">
+      <span class="animate-radar absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+    </span>
+    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
     <span>Comentar</span>
   </a>
 
