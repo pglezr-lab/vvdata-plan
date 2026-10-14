@@ -101,17 +101,17 @@
               <span class="animate-radar absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            <span>Hito Activo: Tarea 6</span>
+            <span>Hito Activo: Tarea 7</span>
           </div>
         </div>
 
         <div>
           <h2 class="text-xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-baseline gap-2 flex-wrap">
             <span>Progreso Total:</span>
-            <span class="text-emerald-600 text-2xl sm:text-4xl">30%</span>
+            <span class="text-emerald-600 text-2xl sm:text-4xl">35%</span>
           </h2>
           <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal leading-relaxed">
-            Fase actual: <strong>Bloque 1 Concluido al 100% · Iniciando Bloque 2 (Arquitectura y Base de Datos)</strong>. El proyecto avanza en 3 bloques secuenciales para garantizar calidad y cero deuda técnica.
+            Fase actual: <strong>Bloque 1 Concluido (100%) · Bloque 2 en Avance (Tarea 6 Aprobada en ADR-0002 · Activa Tarea 7)</strong>. El proyecto avanza en 3 bloques secuenciales para garantizar calidad y cero deuda técnica.
           </p>
         </div>
       </div>
@@ -122,7 +122,7 @@
           <span>División en 3 Grandes Hitos</span>
           <span class="text-emerald-700 font-extrabold flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            Bloque 1 completado (7/7)
+            8 Hitos Aprobados (Tarea 6 Concluida)
           </span>
         </div>
 
@@ -305,7 +305,23 @@
         <span class="self-start xs:self-auto text-[11px] font-extrabold px-3 py-1 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 uppercase">En Curso · Bloque 2</span>
       </div>
 
-      <!-- Tarea 6 (EN EJECUCIÓN ACTIVA - ANIMACIÓN VIVA DE ALTO IMPACTO) -->
+      <!-- Tarea 6 (APROBADA - ADR-0002) -->
+      <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
+        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+          ✓
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 6 · Decisión de Base de Datos, Servidor y Almacenamiento (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">ADR-0002</code>)</h4>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+            Aprobada <strong>Arquitectura Híbrida Desacoplada</strong> tras triple auditoría FinOps 2026 (ahorro del 85% a 3 años): <strong>PostgreSQL 16 + <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">apps/api</code> en VPS Hostinger KVM 2 (EE. UU., 8 GB RAM)</strong> con panel visual <strong>Dokploy</strong> y respaldos nocturnos cifrados; fotos y facturas XML/PDF en <strong>Cloudflare R2 Standard</strong> (100% privado con URLs pre-firmadas de 15 min y $0 en descargas); y pantallas (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">apps/web</code> y <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">apps/campo</code> PWA) en <strong>Cloudflare Pages</strong> con antenas en México (&lt;15 ms).
+          </p>
+        </div>
+      </article>
+
+      <!-- Tarea 7 (EN EJECUCIÓN ACTIVA - ANIMACIÓN VIVA DE ALTO IMPACTO) -->
       <article class="animate-glow-amber bg-gradient-to-br from-amber-50/95 via-white to-amber-100/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-amber-400 relative overflow-hidden transition-all duration-300">
         <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -318,7 +334,7 @@
           <div class="flex-1 min-w-0 space-y-2.5">
             <div class="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
               <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                <span>Tarea 6 · Decisión de Base de Datos, Servidor y Almacenamiento</span>
+                <span>Tarea 7 · Selección de Stack Final y Compuerta de Calidad (P3)</span>
               </h4>
               
               <!-- Pill animada con onda radar -->
@@ -332,14 +348,13 @@
             </div>
 
             <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed font-normal">
-              • <strong>Persistencia:</strong> Evaluación técnica y financiera entre PostgreSQL autónomo en VPS vs. Supabase BaaS.<br>
-              • <strong>Seguridad de archivos:</strong> Almacenamiento privado con URLs firmadas para fotos de campo y facturas XML/PDF.<br>
-              • <strong>Despliegue:</strong> Definición de infraestructura para Backoffice (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">apps/web</code>), PWA de Campo (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">apps/campo</code>) y API (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">apps/api</code>).
+              • <strong>Stack Oficial (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">ADR-0003</code>):</strong> Definición de frameworks y librerías para Backoffice, PWA de campo, API y parser de facturas CFDI 4.0.<br>
+              • <strong>Compuerta P3 (Zero-Trust Linter Gate):</strong> Configuración bloqueante pre-commit (tipado estricto, cero advertencias de linter, formato y pruebas automáticas).
             </p>
 
             <!-- Botón WhatsApp para este hito con micro-animación -->
             <div class="pt-1.5">
-              <a href="https://wa.me/?text=Hola%20Pedro,%20estoy%20viendo%20el%20avance%20de%20VVData.%20Sobre%20la%20Tarea%206%20(Base%20de%20Datos%20y%20Servidor)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
+              <a href="https://wa.me/?text=Hola%20Pedro,%20estoy%20viendo%20el%20avance%20de%20VVData.%20Sobre%20la%20Tarea%207%20(Stack%20T%C3%A9cnico%20y%20Calidad)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
                 <span>Comentar esta tarea por WhatsApp</span>
               </a>
@@ -350,8 +365,8 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
         <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 transition-all duration-200 hover:shadow-sm hover:border-slate-300">
-          <div class="font-bold text-slate-800 text-xs sm:text-sm">Tarea 7 · Stack Final y Candados de Calidad (P3)</div>
-          <p class="text-[11px] mt-1 text-slate-500">Selección de librerías oficiales, tipado estricto y pruebas automáticas pre-commit.</p>
+          <div class="font-bold text-slate-800 text-xs sm:text-sm">Siguiente · Modelado Relacional en <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">db/migrations/</code></div>
+          <p class="text-[11px] mt-1 text-slate-500">Jerarquía Cliente → Ubicación → Proyecto, subasta ciega de proveedores y Libro Mayor de Tesorería.</p>
         </div>
         <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 transition-all duration-200 hover:shadow-sm hover:border-slate-300">
           <div class="font-bold text-slate-800 text-xs sm:text-sm">Módulo Core · Tesorería, Gastos y Facturas (Estilo Odoo)</div>
@@ -381,8 +396,9 @@
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1" for="taskSelect">Tema del Comentario</label>
             <select id="taskSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+              <option value="Tarea 6 Aprobada (Hostinger + Dokploy + Cloudflare)">Tarea 6 · Arquitectura Aprobada (Hostinger + Dokploy + Cloudflare)</option>
+              <option value="Tarea 7 (Stack Técnico y Calidad P3)">Tarea 7 · Selección de Stack Técnico y Candados de Calidad</option>
               <option value="Conciliación Bancaria, Gastos y Facturas">Conciliación Bancaria, Gastos y Facturas (Estilo Odoo)</option>
-              <option value="Tarea 6 (Base de Datos y Servidor)">Tarea 6 · Decisión de Base de Datos y Servidor</option>
               <option value="Tarea 5 (Auditoría Forense Concluida)">Tarea 5 · Hallazgos de Ingeniería Inversa (Vercel / Zoho)</option>
               <option value="Requerimientos Funcionales">Requerimientos Funcionales (Cliente-Ubicación-Proyecto)</option>
               <option value="SOPs de Negocio">SOPs de Negocio (Anticipo 50%, Subastas)</option>
@@ -413,7 +429,7 @@
         <span>Proyecto: <strong>VVData</strong> · Dirección: <strong>Pedro González</strong></span>
       </div>
       <div>
-        <span>Actualización: <strong>12 Oct 2026</strong> · Repositorio GitHub sincronizado</span>
+        <span>Actualización: <strong>14 Oct 2026</strong> · Repositorio GitHub sincronizado</span>
       </div>
     </div>
   </footer>
