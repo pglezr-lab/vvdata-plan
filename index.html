@@ -7,6 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>VVData · Tablero Ejecutivo de Avance</title>
+  <link rel="icon" type="image/png" href="./VVData-icono-transparente.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Efecto de resplandor vivo en la tarjeta activa */
@@ -55,8 +56,8 @@
       
       <!-- Marca y Subtítulo con micro-interacción -->
       <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-white shadow-md shadow-emerald-600/25 font-black text-lg sm:text-xl shrink-0 transition-transform duration-300 hover:scale-105">
-          V
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-emerald-50/80 border border-emerald-200/80 flex items-center justify-center p-1 shadow-sm shrink-0 transition-transform duration-300 hover:scale-105">
+          <img src="./VVData-icono-transparente.png" alt="VVData" class="w-full h-full object-contain">
         </div>
         <div class="min-w-0">
           <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
@@ -66,7 +67,7 @@
               Vuélvete Verde
             </span>
           </div>
-          <p class="text-[11px] sm:text-xs text-slate-500 font-medium truncate">Portal Ejecutivo de Avance</p>
+          <p class="text-[11px] sm:text-xs text-slate-500 font-medium truncate">Portal Ejecutivo de Avance y Hoja de Ruta</p>
         </div>
       </div>
 
@@ -109,9 +110,10 @@
           <h2 class="text-xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-baseline gap-2 flex-wrap">
             <span>Progreso Total:</span>
             <span class="text-emerald-600 text-2xl sm:text-4xl">45%</span>
+            <span class="text-xs sm:text-sm font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-lg">Rumbo a 50% al cerrar Tarea 9</span>
           </h2>
           <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal leading-relaxed">
-            Fase actual: <strong>Bloque 1 Concluido (100%) · Bloque 2 en Avance (Tareas 6, 7 y 8 Concluidas · Activa Tarea 9: T9.a Completado)</strong>. El proyecto avanza en 3 bloques secuenciales para garantizar calidad y cero deuda técnica.
+            Fase actual: <strong>Bloque 1 Concluido (100%) · Bloque 2 en Avance (Tareas 6, 7 y 8 Concluidas · Prototipo Interactivo y Reglas <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">ADR-0005</code> Aprobadas en Junta · Activa Tarea 9: T9.a Completado y en curso T9.b–T9.g)</strong>. El proyecto avanza en 3 bloques secuenciales con hoja de ruta de 17 tareas hasta el 100%.
           </p>
         </div>
       </div>
@@ -119,10 +121,10 @@
       <!-- Barra de Progreso Segmentada con Shimmer Animado -->
       <div class="mt-5 space-y-3">
         <div class="flex items-center justify-between text-xs font-bold text-slate-600">
-          <span>División en 3 Grandes Hitos</span>
+          <span>División en 3 Grandes Hitos Contractuales</span>
           <span class="text-emerald-700 font-extrabold flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            10 Hitos Aprobados (Tarea 8 Concluida · T9.a ✓)
+            11 Hitos Aprobados (Incluye Prototipo Interactivo y ADR-0005 ✓)
           </span>
         </div>
 
@@ -138,12 +140,12 @@
           <!-- Bloque 2 (40% global, con avance interno de Tareas 6, 7 y 8 completadas = +15% global = 37.5% del bloque) -->
           <div class="relative h-full rounded-lg sm:rounded-xl bg-amber-100/80 border border-amber-300/70 flex items-center justify-center transition-all overflow-hidden" style="width: 40%;">
             <div class="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-700" style="width: 37.5%;"></div>
-            <span class="relative text-[10px] font-bold text-amber-950 px-1 truncate hidden sm:inline">En Curso · Bloque 2 (Tareas 6, 7 y 8 ✓)</span>
+            <span class="relative text-[10px] font-bold text-amber-950 px-1 truncate hidden sm:inline">En Curso · Bloque 2 (T6–T8 y Prototipo ✓ · Activa T9)</span>
           </div>
 
           <!-- Bloque 3 -->
           <div class="h-full rounded-lg sm:rounded-xl bg-slate-200/60 flex items-center justify-center transition-all" style="width: 30%;">
-            <span class="text-[10px] font-bold text-slate-400 px-1 truncate hidden sm:inline">Pendiente</span>
+            <span class="text-[10px] font-bold text-slate-400 px-1 truncate hidden sm:inline">Pendiente (T14–T17)</span>
           </div>
         </div>
 
@@ -155,9 +157,9 @@
                 <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
                 Bloque 1 · Cimientos y Reglas
               </span>
-              <span class="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-emerald-200/80 text-emerald-900">100%</span>
+              <span class="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-emerald-200/80 text-emerald-900">30% · 100% ✓</span>
             </div>
-            <div class="text-slate-600 text-[11px] mt-1">SOPs, Requerimientos, Conciliación Bancaria e Ingeniería Inversa concluidos.</div>
+            <div class="text-slate-600 text-[11px] mt-1">Tareas 0 a 5: SOPs, Requerimientos, Conciliación Bancaria e Ingeniería Inversa concluidos.</div>
           </div>
 
           <div class="p-3 rounded-xl sm:rounded-2xl bg-amber-50/70 border border-amber-300 transition-all duration-200 hover:bg-amber-50 hover:shadow-sm">
@@ -166,17 +168,20 @@
                 <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
                 Bloque 2 · Core & Cotizador Web
               </span>
-              <span class="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-amber-200/80 text-amber-900">Activo · +15%</span>
+              <span class="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-amber-200/80 text-amber-900">40% · +15% Activo</span>
             </div>
-            <div class="text-slate-600 text-[11px] mt-1">Tareas 6, 7 y 8 aprobadas (Infraestructura, Stack, Núcleo de Dominio, PostgreSQL 16 y R2). Activa Tarea 9 (Clientes y Proyectos).</div>
+            <div class="text-slate-600 text-[11px] mt-1">Tareas 6 a 13 (del 30% al 70%): T6, T7, T8 y Prototipo Interactivo aprobados. Activa T9; siguen T10 a T13.</div>
           </div>
 
           <div class="p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 transition-all duration-200 hover:bg-white hover:shadow-sm">
-            <div class="font-bold text-slate-700 flex items-center gap-1.5 text-xs sm:text-sm">
-              <span class="w-2 h-2 rounded-full bg-slate-300 shrink-0"></span>
-              Bloque 3 · App Móvil de Campo
+            <div class="font-bold text-slate-700 flex items-center justify-between gap-1.5 text-xs sm:text-sm">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-slate-300 shrink-0"></span>
+                Bloque 3 · App Campo y Entrega
+              </span>
+              <span class="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-slate-200/80 text-slate-600">30% · T14–T17</span>
             </div>
-            <div class="text-slate-500 text-[11px] mt-1">PWA con evidencia fotográfica antes/después y modo sin señal.</div>
+            <div class="text-slate-500 text-[11px] mt-1">Tareas 14 a 17 (del 70% al 100%): Modo sin señal en campo, fotos antes/después, pruebas y lanzamiento en producción.</div>
           </div>
         </div>
       </div>
@@ -354,6 +359,99 @@
         </div>
       </article>
 
+      <!-- HITO ESPECIAL DE PROTOTIPO INTERACTIVO Y VALIDACIÓN CON CLIENTE (ARCH-002 & ADR-0005) -->
+      <article class="bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-emerald-400/90 shadow-sm relative overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-emerald-400/10 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="flex items-start gap-3 sm:gap-4">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 font-black text-sm sm:text-base shadow-sm shadow-emerald-600/25 mt-0.5">
+            ✓
+          </div>
+
+          <div class="flex-1 min-w-0 space-y-3">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div>
+                <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded border border-emerald-200 mb-1">
+                  Hito Especial · Demostración y Validación con Vuélvete Verde
+                </span>
+                <h4 class="font-black text-slate-900 text-sm sm:text-base">
+                  Pausa de Prototipo Interactivo y Reglas de Aplicación Aprobadas (<code class="bg-emerald-100/80 px-1.5 py-0.5 rounded text-emerald-950">ARCH-002</code> · <code class="bg-emerald-100/80 px-1.5 py-0.5 rounded text-emerald-950">ADR-0005</code>)
+                </h4>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-600 text-white uppercase tracking-wide shrink-0 shadow-sm">
+                Aprobado en Junta · 20 Oct
+              </span>
+            </div>
+
+            <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed">
+              Antes de continuar construyendo los módulos sobre una visión rígida, se diseñó y validó en vivo con Vuélvete Verde un <strong>Prototipo Interactivo Completo</strong> de la aplicación. En esta sesión quedaron aprobadas y blindadas las siguientes decisiones operativas y financieras:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[11px] sm:text-xs">
+              <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
+                <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  1. App Unificada (8 Módulos) y Permisos por Usuario
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  Unificación en 8 módulos (<code class="bg-slate-100 px-1 rounded">M1</code> Clientes a <code class="bg-slate-100 px-1 rounded">M8</code> Catálogo) con permisos configurables por persona: un <strong>Evaluador</strong> puede cotizar y negociar precios, mientras que un <strong>Auxiliar o Cuadrilla</strong> opera en campo con <strong>costos y márgenes 100% ocultos</strong>.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
+                <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  2. Doble Cotización Espejo (-A / -B) y Cuentas por Pagar
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  Cada proyecto genera dos documentos vinculados con secuencia editable: <strong>Cotización Cliente (<code class="bg-slate-100 px-1 rounded">-A</code>)</strong> con precios de venta y conmutador de IVA, y <strong>Orden Proveedor (<code class="bg-slate-100 px-1 rounded">-B</code>)</strong> conectada a <strong>Cuentas por Pagar</strong> en Tesorería para saber qué se debe, qué ya se pagó y a qué cotización corresponde.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
+                <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  3. Condiciones de Pago y Piso de Seguridad Financiera
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  Esquemas configurables estilo Odoo (<strong>50% Anticipo - 50% al Finalizar</strong> predeterminado, <strong>100% Pago Inmediato</strong> o personalizados como 60/40), blindados por la regla: <strong>el anticipo del cliente jamás puede ser menor al costo total del proveedor</strong>.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
+                <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  4. Cobro con Tarjeta (Stripe / PayPal), MSI y Comisiones
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  Cobro en línea en <strong>1 exhibición</strong> o a <strong>3, 6, 9 y 12 Meses Sin Intereses (MSI)</strong> con monto mínimo configurable y 3 políticas en Ajustes: <em>(A) Cliente cubre comisión</em>, <em>(B) VV absorbe 1 pago y cliente cubre MSI</em>, o <em>(C) VV absorbe todo con alerta si baja el margen mínimo</em>.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
+                <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  5. Subasta Ciega, Contrapropuestas y Casos Límite
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  Botón de <strong>Contrapropuesta</strong> para renegociar costos con uno o todos los proveedores (o invitar uno nuevo) conservando los márgenes; regreso al Paso 2 por concepto olvidado; corrección en vivo de dirección/contacto y botón <strong>«Duplicar y Reemplazar»</strong> que transfiere automáticamente el anticipo ya pagado.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
+                <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  6. Altas Rápidas Sin Bloqueo, GPS y Modo Sin Señal
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  Registro ágil de clientes solo con el nombre (incluso sin internet desde campo), recordatorios automáticos para completar teléfono, correo o dirección antes de agendar visita, y soporte de coordenadas GPS para terrenos sin calle.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
       <!-- Tarea 9 (EN EJECUCIÓN ACTIVA - ANIMACIÓN VIVA DE ALTO IMPACTO) -->
       <article class="animate-glow-amber bg-gradient-to-br from-amber-50/95 via-white to-amber-100/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-amber-400 relative overflow-hidden transition-all duration-300">
         <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -365,8 +463,8 @@
 
           <div class="flex-1 min-w-0 space-y-2.5">
             <div class="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
-              <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                <span>Tarea 9 · Identidad, Clientes, Ubicaciones y Proyectos (<code class="bg-amber-100/80 px-1.5 py-0.5 rounded text-amber-950">T9.a Completado</code>)</span>
+              <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2 flex-wrap">
+                <span>Tarea 9 · Identidad, Permisos, Clientes y Proyectos (<code class="bg-amber-100/80 px-1.5 py-0.5 rounded text-amber-950">T9.a + ADR-0005 ✓ · En curso T9.b–T9.g</code>)</span>
               </h4>
               
               <span class="self-start xs:self-auto relative inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-amber-400 text-amber-950 uppercase tracking-wide shrink-0 shadow-sm">
@@ -374,17 +472,17 @@
                   <span class="animate-radar absolute inline-flex h-full w-full rounded-full bg-amber-900 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-950"></span>
                 </span>
-                <span>En Ejecución Activa</span>
+                <span>En Ejecución (+5% → 50%)</span>
               </span>
             </div>
 
             <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed font-normal">
-              • <strong>Completado (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">T9.a</code> · Dominio de Identidad y Clientes):</strong> 4 roles (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">dirección</code>, <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">administración</code>, <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">evaluador</code>, <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">cuadrilla</code>), celular mexicano con enlaces <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">wa.me</code> y <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">mailto:</code>, dirección estructurada con zona obligatoria, datos fiscales CFDI 4.0 opcionales, alta guiada de Cliente + primera Ubicación y búsqueda unificada (<strong>385 pruebas unitarias y 32 de integración en verde</strong>).<br>
-              • <strong>Siguiente (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">T9.b</code> a <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">T9.g</code>):</strong> Dominio de Proyectos (10 etapas canónicas, proyección a 5 estados y folio por zona <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">{Zona} - Proyecto {NN}</code>), migraciones SQL <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">0002</code> y <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">0003</code>, contratos y API.
+              • <strong>Completado (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">T9.a</code> + Validación <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">ADR-0005</code>):</strong> Base de identidad, contacto WhatsApp/correo, datos fiscales CFDI 4.0 y formalización de todas las reglas aprobadas en la demostración del prototipo (<strong>385 pruebas unitarias y 32 de integración en verde</strong>).<br>
+              • <strong>En ejecución (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">T9.b</code> a <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">T9.g</code>):</strong> Permisos modulares (<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">M1</code>–<code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">M8</code> y candado de costos), clientes Padre → Hijos (Ubicación, Contacto, Factura, Otro) con alta rápida sin bloqueo, coordenadas GPS y actividades automáticas por datos faltantes, dominio de Proyectos con nomenclatura sugerida editable <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">{Nombre} - {Colonia} - {NN}</code>, las 10 etapas del flujo comercial (incluyendo regreso a renegociación), migraciones SQL <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">0002</code> y <code class="bg-amber-100/80 px-1 py-0.5 rounded text-amber-950">0003</code>, contratos y API.
             </p>
 
             <div class="pt-1.5">
-              <a href="https://wa.me/?text=Hola%20Pedro,%20estoy%20viendo%20el%20avance%20de%20VVData%20(45%25).%20Sobre%20la%20Tarea%209%20(Clientes,%20Ubicaciones%20y%20Proyectos)%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
+              <a href="https://wa.me/?text=Hola%20Pedro,%20estoy%20viendo%20el%20avance%20de%20VVData%20(45%25)%20y%20el%20resumen%20del%20Prototipo%20aprobado.%20Sobre%20la%20Tarea%209%20tengo%20este%20comentario:%20" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all duration-200 hover:scale-[1.02] active:scale-95">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zm0 18.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.25-8.24 8.25z"/></svg>
                 <span>Comentar esta tarea por WhatsApp</span>
               </a>
@@ -392,15 +490,159 @@
           </div>
         </div>
       </article>
+    </section>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-        <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 transition-all duration-200 hover:shadow-sm hover:border-slate-300">
-          <div class="font-bold text-slate-800 text-xs sm:text-sm">Siguiente · Tarea 10 · Proveedores, Subasta Ciega y Cotizaciones</div>
-          <p class="text-[11px] mt-1 text-slate-500">Partidas, enlaces de token de 256 bits para proveedores, comparador, sobreprecio variable y bloqueo de envío.</p>
+    <!-- PLAN A SEGUIR: HOJA DE RUTA COMPLETA HASTA EL 100% (TAREAS 10 A 17) -->
+    <section class="space-y-5 pt-4 border-t border-slate-200">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider text-slate-700 bg-slate-200/80 px-2.5 py-0.5 rounded-lg mb-1">
+            Seguimiento Transparente de Punta a Punta
+          </span>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Plan a Seguir: Hoja de Ruta Completa hacia el 100%</h3>
+          <p class="text-xs text-slate-500">Secuencia exacta de los siguientes hitos de ingeniería para cerrar el Bloque 2 (70%) y el Bloque 3 (100%).</p>
         </div>
-        <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 transition-all duration-200 hover:shadow-sm hover:border-slate-300">
-          <div class="font-bold text-slate-800 text-xs sm:text-sm">Tarea 11 · Tesorería, Gastos y Facturas CFDI 4.0 (Estilo Odoo)</div>
-          <p class="text-[11px] mt-1 text-slate-500">Balance real bancario (Entradas − Salidas), lectura automática de facturas XML/PDF y conciliación en 1 clic.</p>
+        <div class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-900 text-white font-bold text-xs shadow-sm">
+          <span>Tareas 10 a 17</span>
+          <span class="text-emerald-400">→ 100%</span>
+        </div>
+      </div>
+
+      <!-- SUB-BLOQUE: CIERRE DEL BLOQUE 2 (DEL 50% AL 70%) -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between gap-2 px-1">
+          <h4 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-amber-900 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            Cierre del Bloque 2 · Core Web, Cotizador Espejo, Tesorería y Portales (Del 50% al 70%)
+          </h4>
+          <span class="text-[11px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md">4 Tareas Restantes en Bloque 2</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- Tarea 10 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-amber-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">Siguiente · Tarea 10</span>
+                <span class="text-[11px] font-extrabold text-emerald-700">+5% → 55% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Catálogo (M8), Proveedores (M4), Subasta Ciega y Doble Cotización (-A / -B)</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Catálogo de servicios, enlaces seguros sin cuenta para subasta 100% ciega en 2 fases, botón de <strong>Contrapropuesta</strong> a proveedores, desdoblamiento automático en <strong>Cotización Cliente (<code class="bg-slate-100 px-1 rounded">-A</code>)</strong> y <strong>Orden Proveedor (<code class="bg-slate-100 px-1 rounded">-B</code>)</strong>, sobreprecio variable y flujo de <strong>«Duplicar y Reemplazar»</strong> con traslado de anticipo (<code class="bg-slate-100 px-1 rounded">T10.a</code> a <code class="bg-slate-100 px-1 rounded">T10.h</code>).
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarea 11 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-amber-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">Tarea 11</span>
+                <span class="text-[11px] font-extrabold text-emerald-700">+5% → 60% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Tesorería (M5), Cuentas por Pagar, Pasarelas (Stripe / PayPal) y Facturas CFDI 4.0</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Balance bancario real (Entradas − Salidas), control de <strong>Cuentas por Pagar del proveedor vinculadas a su cotización <code class="bg-slate-100 px-1 rounded">-B</code></strong>, cobro con tarjeta y MSI (Stripe/PayPal) con las 3 políticas de comisión, lector automático de facturas XML/PDF estilo Odoo y conciliación bancaria (<code class="bg-slate-100 px-1 rounded">T11.a</code> a <code class="bg-slate-100 px-1 rounded">T11.f</code>).
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarea 12 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-amber-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">Tarea 12</span>
+                <span class="text-[11px] font-extrabold text-emerald-700">+5% → 65% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Agenda (M3), Condiciones de Pago, Recurrencia, Ficha 360° y Análisis (M7)</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Calendario operativo de visitas, plazos de pago con <strong>piso mínimo del costo del proveedor</strong>, recordatorios automáticos de mantenimiento recurrente, Ficha 360° del cliente, vistas dinámicas personalizables y tablero de rentabilidad (<code class="bg-slate-100 px-1 rounded">T12.a</code> a <code class="bg-slate-100 px-1 rounded">T12.g</code>).
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarea 13 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-amber-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 border border-emerald-300">Tarea 13 · Cierre Bloque 2</span>
+                <span class="text-[11px] font-extrabold text-emerald-700">+5% → 70% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Aplicación Web Unificada (M1 a M8), PDFs y Portales de Cliente y Proveedor</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Integración visual completa de los 8 módulos en escritorio y navegador móvil conforme al prototipo aprobado, emisión de PDFs oficiales (<code class="bg-slate-100 px-1 rounded">COT-A</code> y <code class="bg-slate-100 px-1 rounded">COT-B</code>) y portales externos sin contraseña para clientes y proveedores (<code class="bg-slate-100 px-1 rounded">T13.a</code> a <code class="bg-slate-100 px-1 rounded">T13.g</code>).
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- SUB-BLOQUE: ETAPA 3 / BLOQUE 3 (DEL 70% AL 100%) -->
+      <div class="space-y-3 pt-2">
+        <div class="flex items-center justify-between gap-2 px-1">
+          <h4 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+            Etapa 3 · Bloque 3: App Móvil de Campo Sin Señal, Pruebas y Lanzamiento en Producción (Del 70% al 100%)
+          </h4>
+          <span class="text-[11px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">4 Tareas de Cierre Final</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- Tarea 14 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-teal-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200">Tarea 14</span>
+                <span class="text-[11px] font-extrabold text-teal-700">+8% → 78% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Cimientos de Operación en Campo y Modo Sin Señal (Offline-First)</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Instalación como App en iPhone/Android (PWA), base de datos local en el teléfono para operar en ranchos o zonas sin cobertura celular y compresión inteligente de fotografías en segundo plano (<code class="bg-slate-100 px-1 rounded">T14.a</code> a <code class="bg-slate-100 px-1 rounded">T14.e</code>).
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarea 15 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-teal-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200">Tarea 15</span>
+                <span class="text-[11px] font-extrabold text-teal-700">+8% → 86% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Flujos de Campo: Altas Sin Conexión, Fotos Antes/Después y Sincronización</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Registro de clientes, ubicaciones GPS y levantamientos de cotización sin internet, captura de evidencia fotográfica (<em>Antes, Durante y Después</em>) por visita y sincronización automática en 3 fases al recuperar señal (<code class="bg-slate-100 px-1 rounded">T15.a</code> a <code class="bg-slate-100 px-1 rounded">T15.e</code>).
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarea 16 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md hover:border-teal-300">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200">Tarea 16</span>
+                <span class="text-[11px] font-extrabold text-teal-700">+7% → 93% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Verificación Integral, Pruebas de Punta a Punta (E2E) y Calidad Automatizada</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Auditoría completa de seguridad, pruebas automatizadas simulando usuarios reales en computadora, iPhone/Safari y Android/Chrome (<code class="bg-slate-100 px-1 rounded">Playwright</code>) y validación integral de flujos financieros (<code class="bg-slate-100 px-1 rounded">T16.a</code> a <code class="bg-slate-100 px-1 rounded">T16.d</code>).
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarea 17 -->
+          <article class="p-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-50/70 to-white border border-emerald-300 shadow-sm flex flex-col justify-between gap-2 transition-all duration-200 hover:shadow-md">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-600 text-white">Tarea 17 · Entrega Final</span>
+                <span class="text-[11px] font-extrabold text-emerald-700">+7% → 100% Global</span>
+              </div>
+              <h5 class="font-bold text-slate-900 text-xs sm:text-sm">Despliegue en Producción (vuelveteverde.mx), Respaldos y Puesta en Marcha</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Lanzamiento oficial bajo el dominio <code class="bg-slate-100 px-1 rounded">vuelveteverde.mx</code>, activación de respaldos nocturnos cifrados con simulacro real de restauración, manuales operativos y entrega formal del sistema al 100% (<code class="bg-slate-100 px-1 rounded">T17.a</code> a <code class="bg-slate-100 px-1 rounded">T17.d</code>).
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -426,11 +668,13 @@
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1" for="taskSelect">Tema del Comentario</label>
             <select id="taskSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
-              <option value="Tarea 9 en Curso (Identidad, Clientes, Ubicaciones y Proyectos)">Tarea 9 · Identidad, Clientes, Ubicaciones y Proyectos (En Curso)</option>
+              <option value="Prototipo Interactivo y Decisiones Aprobadas (ARCH-002 / ADR-0005)">Prototipo Interactivo y Decisiones Aprobadas (Cotización -A/-B, Pagos, MSI y Permisos)</option>
+              <option value="Tarea 9 en Curso (Identidad, Permisos, Clientes y Proyectos)">Tarea 9 · Identidad, Permisos, Clientes y Proyectos (En Curso)</option>
+              <option value="Hoja de Ruta Completa (Tareas 10 a 17 hacia el 100%)">Plan a Seguir · Hoja de Ruta Completa (Tareas 10 a 17)</option>
               <option value="Tarea 8 Aprobada (Plataforma Fundacional, PostgreSQL 16 y Cloudflare R2)">Tarea 8 · Plataforma Fundacional, PostgreSQL 16 y R2 (Aprobada)</option>
               <option value="Tarea 6 Aprobada (Hostinger + Dokploy + Cloudflare)">Tarea 6 · Arquitectura Aprobada (Hostinger + Dokploy + Cloudflare)</option>
               <option value="Tarea 7 (Stack Técnico y Calidad P3)">Tarea 7 · Selección de Stack Técnico y Candados de Calidad</option>
-              <option value="Conciliación Bancaria, Gastos y Facturas">Conciliación Bancaria, Gastos y Facturas (Estilo Odoo)</option>
+              <option value="Conciliación Bancaria, Gastos y Facturas">Conciliación Bancaria, Cuentas por Pagar y Facturas (Estilo Odoo)</option>
               <option value="Tarea 5 (Auditoría Forense Concluida)">Tarea 5 · Hallazgos de Ingeniería Inversa (Vercel / Zoho)</option>
               <option value="Requerimientos Funcionales">Requerimientos Funcionales (Cliente-Ubicación-Proyecto)</option>
               <option value="SOPs de Negocio">SOPs de Negocio (Anticipo 50%, Subastas)</option>
@@ -461,7 +705,7 @@
         <span>Proyecto: <strong>VVData</strong> · Dirección: <strong>Pedro González</strong></span>
       </div>
       <div>
-        <span>Actualización: <strong>14 Oct 2026</strong> · Repositorio GitHub sincronizado</span>
+        <span>Actualización: <strong>20 Oct 2026</strong> · Prototipo Interactivo y Hoja de Ruta 100% sincronizados</span>
       </div>
     </div>
   </footer>
