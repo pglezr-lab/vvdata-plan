@@ -6,6 +6,8 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
   <title>VVData · Tablero Ejecutivo de Avance</title>
   <link rel="icon" type="image/png" href="./VVData-icono-transparente.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -32,7 +34,6 @@
       animation: shimmerSweep 3.2s infinite ease-in-out;
     }
 
-
     /* Efecto radar expansivo */
     @keyframes radarPulse {
       0% { transform: scale(1); opacity: 0.9; }
@@ -40,6 +41,44 @@
     }
     .animate-radar {
       animation: radarPulse 1.8s infinite cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    /* Animación sutil para invitar a dar clic en los desplegables */
+    @keyframes inviteBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(2.5px); }
+    }
+    .animate-invite-chevron {
+      animation: inviteBounce 1.6s infinite ease-in-out;
+    }
+
+    @keyframes invitePulseRing {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.28);
+      }
+      50% {
+        box-shadow: 0 0 0 5px rgba(16, 185, 129, 0);
+      }
+    }
+    .animate-invite-pill {
+      animation: invitePulseRing 2.4s infinite ease-in-out;
+    }
+
+    /* Acordeón suave para secciones colapsables */
+    .accordion-grid {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s ease, margin-top 0.28s ease;
+      margin-top: 0;
+    }
+    .accordion-grid.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 0.85rem;
+    }
+    .accordion-inner {
+      overflow: hidden;
     }
 
     body {
@@ -187,117 +226,146 @@
       </div>
     </section>
 
-    <!-- LISTADO SECUENCIAL DE TAREAS: ETAPA 1 CONCLUIDA -->
-    <section class="space-y-4">
-      <div class="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
-        <div>
-          <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Etapa 1: Cimientos, Requisitos y Auditoría Forense</h3>
-          <p class="text-xs text-slate-500">Bloque 1 finalizado al 100% con todas las reglas operativas y financieras blindadas.</p>
+    <!-- LISTADO SECUENCIAL DE TAREAS: ETAPA 1 CONCLUIDA (COLAPSABLE CON ANIMACIÓN DE INVITACIÓN) -->
+    <section class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-emerald-200/90 shadow-sm transition-all duration-300 hover:shadow-md">
+      <button
+        type="button"
+        onclick="toggleAccordion('etapa1-body', 'etapa1-btn-label', 'etapa1-chevron', 'Clic para desplegar las 7 tareas concluidas', 'Ocultar detalle de Etapa 1')"
+        class="w-full text-left flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer group focus:outline-none"
+        aria-expanded="false"
+      >
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 font-black text-sm sm:text-base shadow-sm shadow-emerald-600/20 mt-0.5 transition-transform duration-200 group-hover:scale-105">
+            ✓
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="text-base sm:text-xl font-black text-slate-900 tracking-tight group-hover:text-emerald-800 transition-colors">
+                Etapa 1: Cimientos, Requisitos y Auditoría Forense
+              </h3>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-extrabold text-[10px] sm:text-xs border border-emerald-300">
+                ✓ 7 de 7 Aprobadas (30% Global)
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">
+              Bloque 1 finalizado al 100%: SOPs, Requerimientos, Conciliación Bancaria e Ingeniería Inversa blindados.
+            </p>
+          </div>
         </div>
-        <div class="self-start xs:self-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-100 text-emerald-900 font-extrabold text-xs border border-emerald-300">
-          <span>✓</span>
-          <span>7 de 7 Tareas Aprobadas</span>
+
+        <div class="self-start sm:self-center shrink-0">
+          <span class="animate-invite-pill relative overflow-hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 group-hover:bg-emerald-100 text-emerald-900 font-extrabold text-xs border border-emerald-300 transition-all duration-200 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="etapa1-btn-label">Clic para desplegar las 7 tareas concluidas</span>
+            <svg id="etapa1-chevron" class="w-4 h-4 text-emerald-700 animate-invite-chevron transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
         </div>
-      </div>
+      </button>
 
-      <div class="space-y-3">
+      <div id="etapa1-body" class="accordion-grid">
+        <div class="accordion-inner">
+          <div class="space-y-3 pt-3 border-t border-slate-100">
 
-        <!-- Tarea 0 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
-            ✓
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 0 · Alineación y Modelo Mental</h4>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
-              VVData es un gestor ágil de cotizaciones y asignación ciega de cuadrillas con margen variable, no un cotizador rígido de constructora.
-            </p>
-          </div>
-        </article>
+            <!-- Tarea 0 -->
+            <article class="bg-slate-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:bg-white hover:shadow-sm">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+                ✓
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 0 · Alineación y Modelo Mental</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+                  VVData es un gestor ágil de cotizaciones y asignación ciega de cuadrillas con margen variable, no un cotizador rígido de constructora.
+                </p>
+              </div>
+            </article>
 
-        <!-- Tarea 1 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
-            ✓
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 1 · Gobernanza y Perímetro de Seguridad</h4>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
-              Normas autosuficientes (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 break-all">.agents/AGENTS.md</code>), bloqueo físico de contraseñas y normalización de archivos.
-            </p>
-          </div>
-        </article>
+            <!-- Tarea 1 -->
+            <article class="bg-slate-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:bg-white hover:shadow-sm">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+                ✓
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 1 · Gobernanza y Perímetro de Seguridad</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+                  Normas autosuficientes (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 break-all">.agents/AGENTS.md</code>), bloqueo físico de contraseñas y normalización de archivos.
+                </p>
+              </div>
+            </article>
 
-        <!-- Tarea 2 y 2.5 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
-            ✓
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 2 & 2.5 · Estructura Monorepo y Candados</h4>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
-              Carpetas aisladas (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">apps/</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">packages/</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">db/</code>), Visión de Producto (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">PRJ-001</code>) y candados pre-commit.
-            </p>
-          </div>
-        </article>
+            <!-- Tarea 2 y 2.5 -->
+            <article class="bg-slate-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:bg-white hover:shadow-sm">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+                ✓
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 2 & 2.5 · Estructura Monorepo y Candados</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+                  Carpetas aisladas (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">apps/</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">packages/</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">db/</code>), Visión de Producto (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">PRJ-001</code>) y candados pre-commit.
+                </p>
+              </div>
+            </article>
 
-        <!-- Tarea 4 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
-            ✓
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 4 · Requerimientos, SOPs y Conciliación Bancaria</h4>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
-              3 SOPs (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">BIZ-001</code> a <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">003</code>) y 4 Requerimientos (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">REQ-001</code> a <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">004</code>): jerarquía Cliente-Ubicación-Proyecto, subasta ciega, anticipo 50%, <strong>registro ágil de gastos, Balance Bancario Real (Entradas − Salidas) y lectura automática de facturas XML/PDF estilo Odoo</strong>.
-            </p>
-          </div>
-        </article>
+            <!-- Tarea 4 -->
+            <article class="bg-slate-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:bg-white hover:shadow-sm">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+                ✓
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 4 · Requerimientos, SOPs y Conciliación Bancaria</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+                  3 SOPs (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">BIZ-001</code> a <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">003</code>) y 4 Requerimientos (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">REQ-001</code> a <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">004</code>): jerarquía Cliente-Ubicación-Proyecto, subasta ciega, anticipo 50%, <strong>registro ágil de gastos, Balance Bancario Real (Entradas − Salidas) y lectura automática de facturas XML/PDF estilo Odoo</strong>.
+                </p>
+              </div>
+            </article>
 
-        <!-- Tarea 3 -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
-            ✓
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 3 · Respaldo Seguro en GitHub (SSH)</h4>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
-              Repositorio sincronizado al 100% en GitHub (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 break-all">pglezr-lab/VVData</code>) mediante autenticación criptográfica Ed25519.
-            </p>
-          </div>
-        </article>
+            <!-- Tarea 3 -->
+            <article class="bg-slate-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:bg-white hover:shadow-sm">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+                ✓
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 3 · Respaldo Seguro en GitHub (SSH)</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+                  Repositorio sincronizado al 100% en GitHub (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 break-all">pglezr-lab/VVData</code>) mediante autenticación criptográfica Ed25519.
+                </p>
+              </div>
+            </article>
 
-        <!-- Tarea 5 (APROBADA) -->
-        <article class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
-            ✓
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 5 · Ingeniería Inversa y Auditoría Forense (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">ARCH-001</code>)</h4>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
-              Radiografía completa de las 11 rutas y 107 proyectos del sistema previo en Vercel y Zoho CRM. Detectados y blindados 6 defectos críticos: falta de Ubicaciones, cotizador rígido de obra civil, inexistencia de gastos (falsa liquidez en banco), facturas ficticias <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">"N/A"</code> y PIN único sin roles.
-            </p>
-          </div>
-        </article>
+            <!-- Tarea 5 (APROBADA) -->
+            <article class="bg-slate-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-start gap-3 sm:gap-4 transition-all duration-200 hover:bg-white hover:shadow-sm">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm mt-0.5">
+                ✓
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Tarea 5 · Ingeniería Inversa y Auditoría Forense (<code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">ARCH-001</code>)</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">Aprobado</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
+                  Radiografía completa de las 11 rutas y 107 proyectos del sistema previo en Vercel y Zoho CRM. Detectados y blindados 6 defectos críticos: falta de Ubicaciones, cotizador rígido de obra civil, inexistencia de gastos (falsa liquidez en banco), facturas ficticias <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">"N/A"</code> y PIN único sin roles.
+                </p>
+              </div>
+            </article>
 
+          </div>
+        </div>
       </div>
     </section>
 
@@ -359,22 +427,27 @@
         </div>
       </article>
 
-      <!-- HITO ESPECIAL DE PROTOTIPO INTERACTIVO Y VALIDACIÓN CON CLIENTE (ARCH-002 & ADR-0005) -->
-      <article class="bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-emerald-400/90 shadow-sm relative overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <!-- HITO ESPECIAL DE PROTOTIPO INTERACTIVO Y VALIDACIÓN CON CLIENTE (ARCH-002 & ADR-0005 · COLAPSABLE) -->
+      <article class="bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/70 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-emerald-400/90 shadow-sm relative overflow-hidden transition-all duration-200 hover:shadow-md">
         <div class="absolute -right-8 -top-8 w-32 h-32 bg-emerald-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
-        <div class="flex items-start gap-3 sm:gap-4">
-          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 font-black text-sm sm:text-base shadow-sm shadow-emerald-600/25 mt-0.5">
+        <button
+          type="button"
+          onclick="toggleAccordion('prototipo-body', 'prototipo-btn-label', 'prototipo-chevron', 'Clic para desplegar los 6 acuerdos aprobados en junta', 'Ocultar acuerdos del prototipo')"
+          class="w-full text-left flex items-start gap-3 sm:gap-4 cursor-pointer group focus:outline-none"
+          aria-expanded="false"
+        >
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 font-black text-sm sm:text-base shadow-sm shadow-emerald-600/25 mt-0.5 transition-transform duration-200 group-hover:scale-105">
             ✓
           </div>
 
-          <div class="flex-1 min-w-0 space-y-3">
+          <div class="flex-1 min-w-0 space-y-2.5">
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div>
                 <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded border border-emerald-200 mb-1">
                   Hito Especial · Demostración y Validación con Vuélvete Verde
                 </span>
-                <h4 class="font-black text-slate-900 text-sm sm:text-base">
+                <h4 class="font-black text-slate-900 text-sm sm:text-base group-hover:text-emerald-900 transition-colors">
                   Pausa de Prototipo Interactivo y Reglas de Aplicación Aprobadas (<code class="bg-emerald-100/80 px-1.5 py-0.5 rounded text-emerald-950">ARCH-002</code> · <code class="bg-emerald-100/80 px-1.5 py-0.5 rounded text-emerald-950">ADR-0005</code>)
                 </h4>
               </div>
@@ -384,10 +457,24 @@
             </div>
 
             <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed">
-              Antes de continuar construyendo los módulos sobre una visión rígida, se diseñó y validó en vivo con Vuélvete Verde un <strong>Prototipo Interactivo Completo</strong> de la aplicación. En esta sesión quedaron aprobadas y blindadas las siguientes decisiones operativas y financieras:
+              Se diseñó y validó en vivo con Vuélvete Verde un <strong>Prototipo Interactivo Completo</strong> donde se aprobaron los 8 módulos, permisos, doble cotización espejo (<code class="bg-white px-1 rounded border border-emerald-200">-A</code>/<code class="bg-white px-1 rounded border border-emerald-200">-B</code>), cuentas por pagar, condiciones de pago, cobro con tarjeta a MSI y casos límite.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[11px] sm:text-xs">
+            <div class="pt-0.5">
+              <span class="animate-invite-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-600 group-hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition-all duration-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-200 animate-pulse"></span>
+                <span id="prototipo-btn-label">Clic para desplegar los 6 acuerdos aprobados en junta</span>
+                <svg id="prototipo-chevron" class="w-4 h-4 text-white animate-invite-chevron transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </button>
+
+        <div id="prototipo-body" class="accordion-grid">
+          <div class="accordion-inner">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[11px] sm:text-xs pt-3 border-t border-emerald-200/70">
               <div class="p-3 rounded-xl bg-white/95 border border-emerald-200/90 space-y-1">
                 <div class="font-extrabold text-emerald-950 flex items-center gap-1.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
@@ -720,8 +807,24 @@
     <span>Comentar</span>
   </a>
 
-  <!-- SCRIPT PARA ENVÍO DE WHATSAPP -->
+  <!-- SCRIPT PARA ENVÍO DE WHATSAPP Y SECCIONES COLAPSABLES -->
   <script>
+    function toggleAccordion(bodyId, labelId, chevronId, closedText, openText) {
+      const body = document.getElementById(bodyId);
+      const label = document.getElementById(labelId);
+      const chevron = document.getElementById(chevronId);
+      if (!body || !label || !chevron) return;
+
+      const isOpen = body.classList.toggle('is-open');
+      label.textContent = isOpen ? openText : closedText;
+      chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+      if (isOpen) {
+        chevron.classList.remove('animate-invite-chevron');
+      } else {
+        chevron.classList.add('animate-invite-chevron');
+      }
+    }
+
     function sendWhatsAppComment(e) {
       e.preventDefault();
       const name = document.getElementById('userName').value.trim();
